@@ -122,6 +122,7 @@
       transition: color 0.3s;
     }
     .nav-links a:hover, .nav-links a.active { color: var(--brown); }
+    .nav-links a.nav-highlight { color: var(--brown); font-weight: 700; }
 
     .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
     .nav-toggle span { width: 22px; height: 1.5px; background: var(--brown); transition: all 0.3s; }
@@ -169,29 +170,44 @@
     }
 
     .hero-subtitle {
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
       text-transform: uppercase;
-      color: var(--brown-light);
+      color: var(--brown);
       margin-bottom: 1.5rem;
+      line-height: 1.15;
     }
 
-    .hero-desc-box {
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .hero-tag {
       background: var(--card-bg);
       border-radius: 50px;
-      padding: 1rem 2rem;
-      display: inline-block;
-      margin-bottom: 1.5rem;
-    }
-    .hero-desc-box p {
-      font-size: 0.82rem;
-      font-weight: 500;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.75rem;
+      font-weight: 600;
       color: var(--white);
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      text-align: center;
+    }
+
+    .hero-proof {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text-light);
+      max-width: 600px;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+    .hero-proof strong {
+      color: var(--brown);
+      font-weight: 600;
     }
 
     .hero-name {
@@ -285,7 +301,8 @@
       font-size: clamp(1.1rem, 2vw, 1.35rem);
       line-height: 1.8;
       color: var(--text);
-      max-width: 720px;
+      max-width: 100%;
+      text-align: justify;
     }
     .about-text strong {
       color: var(--brown);
@@ -295,47 +312,54 @@
     /* ===== SERVICIOS ===== */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
     .service-card {
       background: var(--bg-warm);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 2.25rem 2rem;
+      padding: 2rem;
       transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
     }
     .service-card:hover {
       border-color: var(--border-accent);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(74, 55, 40, 0.08);
     }
     .service-icon {
       width: 48px;
       height: 48px;
-      min-width: 48px;
       background: var(--card-bg);
       border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      margin-bottom: 1.25rem;
     }
     .service-card h3 {
       font-family: var(--font-display);
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--brown);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
       line-height: 1.3;
     }
     .service-card p {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--text-light);
-      line-height: 1.7;
+      line-height: 1.65;
+    }
+    .service-stat {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      letter-spacing: 0.03em;
+      padding: 0.3rem 0.75rem;
+      background: rgba(181, 161, 124, 0.15);
+      border-radius: 50px;
     }
 
     /* ===== PORTFOLIO ===== */
@@ -597,6 +621,16 @@
       font-weight: 500;
       color: var(--text-light);
     }
+    .exp-context {
+      font-size: 0.8rem;
+      color: var(--accent-dark);
+      font-style: italic;
+      margin-top: 0.1rem;
+    }
+    .exp-list li strong {
+      color: var(--brown);
+      font-weight: 600;
+    }
     .exp-date {
       font-family: var(--font-script);
       font-size: 1.05rem;
@@ -673,8 +707,22 @@
       border-radius: 18px;
       padding: 1.75rem;
       transition: border-color 0.3s;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
     }
     .edu-item:hover { border-color: var(--border-accent); }
+    .edu-logo {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border-radius: 12px;
+      background: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.15rem;
+    }
     .edu-item h4 {
       font-family: var(--font-display);
       font-size: 0.92rem;
@@ -705,6 +753,7 @@
       padding: 0.9rem 0;
       border-bottom: 1px solid var(--border);
     }
+    .lang-row:last-child { border-bottom: none; }
     .lang-name { font-weight: 500; color: var(--brown); font-size: 0.9rem; }
     .lang-level {
       font-size: 0.7rem;
@@ -716,6 +765,52 @@
       border-radius: 50px;
       color: var(--text-light);
     }
+    .lang-level.learning {
+      background: rgba(181, 161, 124, 0.1);
+      border-color: var(--accent);
+      color: var(--accent-dark);
+      font-style: italic;
+      text-transform: none;
+    }
+
+    .tools-section {
+      margin-top: 3rem;
+    }
+    .tools-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 1.25rem;
+    }
+    .tools-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tool-main {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.45rem 1rem;
+      border-radius: 50px;
+      background: var(--card-bg);
+      color: var(--white);
+    }
+    .tool-secondary {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.45rem 1rem;
+      border-radius: 50px;
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      color: var(--text-light);
+    }
+    .tools-legend {
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--text-light);
+      font-style: italic;
+    }
 
     /* ===== CONTACTO ===== */
     .contact-section {
@@ -725,60 +820,84 @@
       border-radius: 40px 40px 0 0;
       margin-top: 2rem;
     }
-    .contact-headline {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: -0.03em;
-      opacity: 0.25;
-      line-height: 1;
-    }
-    .contact-headline-script {
+    .contact-title {
       font-family: var(--font-script);
-      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-size: clamp(3rem, 6vw, 5rem);
       font-weight: 600;
       color: var(--brown);
-      margin-top: -0.2em;
+      margin-bottom: 1.25rem;
     }
-    .contact-sub {
-      font-size: 1rem;
+    .contact-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
       color: var(--text-light);
-      max-width: 460px;
-      margin: 1.5rem auto 2.5rem;
-      line-height: 1.7;
+      max-width: 550px;
+      margin: 0 auto 2.5rem;
     }
-    .contact-actions {
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      max-width: 750px;
+      margin: 0 auto 2.5rem;
+    }
+    .contact-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem 1.25rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
       display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .contact-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(74, 55, 40, 0.08);
+    }
+    .contact-card-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--card-bg); display: flex; align-items: center; justify-content: center;
+    }
+    .contact-card-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-light);
+    }
+    .contact-card-value { font-size: 0.85rem; font-weight: 600; color: var(--brown); }
+    .contact-cv {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.9rem 2.25rem; border-radius: 50px;
+      background: var(--brown); color: var(--white);
+      font-family: var(--font-body); font-size: 0.85rem; font-weight: 600;
+      text-decoration: none;
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
       margin-bottom: 2.5rem;
     }
-    .contact-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.85rem 1.75rem;
-      border: 1.5px solid var(--border);
-      border-radius: 50px;
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text);
-      background: var(--white);
-      transition: all 0.35s;
+    .contact-cv:hover { background: var(--brown-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(74, 55, 40, 0.2); }
+    .contact-location { font-size: 0.85rem; color: var(--text-light); }
+    .contact-section { position: relative; overflow: hidden; }
+    .contact-map {
+      max-width: 500px;
+      margin: 1.5rem auto 0;
+      opacity: 0.5;
+      transition: opacity 0.5s ease;
     }
-    .contact-pill:hover { border-color: var(--accent); color: var(--brown); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
-
-    .contact-location { font-size: 0.85rem; color: var(--text-light); margin-bottom: 2rem; }
-    .social-row { display: flex; justify-content: center; gap: 2.5rem; }
-    .social-row a {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--text-light);
-      transition: color 0.3s;
+    .contact-map:hover { opacity: 0.8; }
+    .contact-map svg { width: 100%; height: auto; }
+    .contact-deco-left,
+    .contact-deco-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.08;
     }
-    .social-row a:hover { color: var(--brown); }
+    .contact-deco-left { left: 2rem; }
+    .contact-deco-right { right: 2rem; }
+    @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; max-width: 320px; } }
 
     /* ===== FOOTER ===== */
     footer {
@@ -797,7 +916,8 @@
       .hero-name { text-align: center; }
       .hero-buttons { justify-content: center; }
 
-      .services-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
       .metrics { grid-template-columns: 1fr 1fr; }
       .portfolio-gallery { grid-template-columns: 1fr 1fr; }
       .highlights { grid-template-columns: 1fr; }
@@ -830,11 +950,13 @@
     <div class="container">
       <a href="#" class="logo"></a>
       <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
         <li><a href="#sobre-mi">Sobre m&iacute;</a></li>
         <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#portfolio" class="nav-highlight">Casos de &eacute;xito</a></li>
         <li><a href="#experiencia">Experiencia</a></li>
         <li><a href="#formacion">Formaci&oacute;n</a></li>
+        <li><a href="#referencias" class="nav-highlight">Referencias</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
       <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
@@ -842,17 +964,23 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="inicio">
     <div class="container">
       <div class="hero-visual">
         <img src="images/miriam-profile.jpg" alt="Miriam Baleztena" loading="eager">
       </div>
       <div class="hero-text">
-        <div class="hero-big">Portfolio.</div>
-        <p class="hero-subtitle">Social Media Manager</p>
-        <div class="hero-desc-box">
-          <p>Creaci&oacute;n de contenido &middot; Redes sociales &middot; Influencer marketing &middot; Paid media</p>
+        <p class="hero-subtitle">Social Media &amp; Community Manager</p>
+        <div class="hero-tags">
+          <span class="hero-tag">Paid Media</span>
+          <span class="hero-tag">Influencer Mktg</span>
+          <span class="hero-tag">Contenido</span>
+          <span class="hero-tag">Community Mgmt</span>
+          <span class="hero-tag">Analytics</span>
         </div>
+        <p class="hero-proof">
+          He participado en campa&ntilde;as que alcanzaron <strong>4.1M de impresiones</strong>, coordinado <strong>80+ colaboraciones con influencers</strong> y gestionado redes de marcas como la <strong>Real Sociedad</strong>, <strong>Lamine Yamal</strong>, <strong>Santiveri</strong> y <strong>La Cr&eacute;me</strong> &mdash; del deporte a la gastronom&iacute;a.
+        </p>
         <div class="hero-name">Miriam Baleztena Irazoqui</div>
         <div class="hero-buttons">
           <a href="#contacto" class="btn btn-primary">Hablemos</a>
@@ -866,18 +994,21 @@
   <section id="sobre-mi">
     <div class="container">
       <div class="section-header reveal">
-        <p class="section-eyebrow">Social Media Manager</p>
+        <p class="section-eyebrow">Social Media &amp; Community Manager</p>
         <div class="section-title-row">
           <div class="section-title">SOBRE</div>
-          <div class="section-title-script">mi</div>
+          <div class="section-title-script">m&iacute;</div>
         </div>
         <div class="section-line"></div>
       </div>
       <p class="about-text reveal">
-        Soy Miriam, Social Media Manager en <strong>Barcelona</strong>. Hasta ahora he llevado la comunicaci&oacute;n digital de <strong>Santiveri</strong>: campa&ntilde;as de Meta Ads con millones de impresiones, coordinaci&oacute;n de m&aacute;s de 80 influencers y toda la estrategia de contenido org&aacute;nico. Antes he trabajado con <strong>The Underdogs</strong>, la agencia de representaci&oacute;n de Lamine Yamal, y con la <strong>Real Sociedad</strong>.
+        Soy Miriam, Social Media &amp; Community Manager en <strong>Barcelona</strong>. Estudi&eacute; comunicaci&oacute;n y lo que m&aacute;s me enganch&oacute; fue descubrir que a trav&eacute;s de las redes sociales se pueden contar historias igual que en cualquier otro medio &mdash; pero llegando a millones de personas.
       </p>
       <p class="about-text reveal" style="margin-top: 1.25rem;">
-        Me encargo de todo el proceso: estrategia, ideaci&oacute;n de contenido, paid media, an&aacute;lisis de m&eacute;tricas e informes. Triling&uuml;e en espa&ntilde;ol, euskera e ingl&eacute;s.
+        He gestionado redes en cuatro sectores muy distintos: desde el palco de prensa de la <strong>Real Sociedad</strong> hasta <strong>The Underdogs</strong>, la agencia que representa a Lamine Yamal, pasando por el marketing gastron&oacute;mico en <strong>La Cr&eacute;me</strong> y la comunicaci&oacute;n digital de <strong>Santiveri</strong>. En cada experiencia he aprendido r&aacute;pido, me he empapado del producto y he aportado desde el primer d&iacute;a &mdash; ya sea coordinando <strong>80+ colaboraciones con influencers</strong>, lanzando campa&ntilde;as con millones de impresiones o planificando contenido org&aacute;nico.
+      </p>
+      <p class="about-text reveal" style="margin-top: 1.25rem;">
+        Disfruto con todo el proceso &mdash; desde pensar la estrategia hasta medir qu&eacute; ha funcionado y por qu&eacute;. Me motivan los proyectos donde puedo aportar desde el primer d&iacute;a y ver el impacto real de lo que hago. Hablo espa&ntilde;ol, euskera e ingl&eacute;s, y actualmente estoy aprendiendo catal&aacute;n.
       </p>
     </div>
   </section>
@@ -895,32 +1026,49 @@
       </div>
       <div class="services-grid">
         <div class="service-card reveal rd1">
-          <div class="service-icon">&#9776;</div>
-          <div>
-            <h3>Redes sociales</h3>
-            <p>Planifico, publico y modero contenido en Instagram, Facebook, LinkedIn y TikTok. La parrilla, los copys, las respuestas a comentarios.</p>
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A3728" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="4" x2="9" y2="20"/></svg>
           </div>
+          <h3>Estrategia y planificaci&oacute;n</h3>
+          <p>Calendarios, l&iacute;nea editorial y parrillas mensuales.</p>
         </div>
         <div class="service-card reveal rd2">
-          <div class="service-icon">&#9998;</div>
-          <div>
-            <h3>Contenido</h3>
-            <p>Copys, dise&ntilde;o con Canva, edici&oacute;n de v&iacute;deo con Premiere, CapCut e InShot. Del brief al post publicado.</p>
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A3728" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="M15 5l4 4"/></svg>
           </div>
+          <h3>Contenido</h3>
+          <p>Copys, dise&ntilde;o con Canva y edici&oacute;n de v&iacute;deo con Premiere y CapCut.</p>
         </div>
         <div class="service-card reveal rd3">
-          <div class="service-icon">&#9636;</div>
-          <div>
-            <h3>Analytics e informes</h3>
-            <p>Metricool, Google Analytics, informes de alcance, engagement y CTR. Datos que sirven para tomar decisiones.</p>
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A3728" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
           </div>
+          <h3>Community Management</h3>
+          <p>Gesti&oacute;n diaria de perfiles, DMs y cobertura de eventos en directo.</p>
+          <span class="service-stat">Cobertura matchday en Real Sociedad</span>
         </div>
         <div class="service-card reveal rd4">
-          <div class="service-icon">&#9734;</div>
-          <div>
-            <h3>Influencers</h3>
-            <p>Busco perfiles, cierro colaboraciones, env&iacute;o productos y hago seguimiento. Seeding y campa&ntilde;as con micro-influencers.</p>
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A3728" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
           </div>
+          <h3>Paid Media</h3>
+          <p>Coordinaci&oacute;n de campa&ntilde;as en Meta Ads y an&aacute;lisis de resultados.</p>
+          <span class="service-stat">4.1M impresiones &middot; CTR 6.76%</span>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A3728" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Influencer Marketing</h3>
+          <p>B&uacute;squeda de perfiles, negociaci&oacute;n, seeding y seguimiento.</p>
+          <span class="service-stat">80+ colaboraciones &middot; 850+ perfiles</span>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A3728" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <h3>Analytics e informes</h3>
+          <p>Metricool, Google Analytics y datos que sirven para tomar decisiones.</p>
         </div>
       </div>
     </div>
@@ -938,7 +1086,7 @@
       </div>
 
       <div class="portfolio-tabs reveal">
-        <button class="portfolio-tab active" data-tab="santiveri">Casa Santiveri <span class="tab-year">Actual</span></button>
+        <button class="portfolio-tab active" data-tab="santiveri">Casa Santiveri <span class="tab-year">2025-2026</span></button>
         <button class="portfolio-tab" data-tab="underdogs">The Underdogs <span class="tab-year">2024</span></button>
         <button class="portfolio-tab" data-tab="lacreme">La Cr&eacute;me <span class="tab-year">2023</span></button>
         <button class="portfolio-tab" data-tab="realsociedad">Real Sociedad FC <span class="tab-year">2021</span></button>
@@ -946,84 +1094,84 @@
 
       <!-- SANTIVERI -->
       <div class="tab-content active" id="tab-santiveri">
-        <p class="case-role reveal">Junior Communications Specialist &middot; Actualmente</p>
-        <p class="case-desc reveal">Santiveri es una marca centenaria de nutrici&oacute;n. Llevo la comunicaci&oacute;n digital: campa&ntilde;as de <strong>Meta Ads</strong> (4.1M impresiones), coordinaci&oacute;n de <strong>80+ influencers</strong>, briefs de producto y propuestas de activaciones como Lapso x Santiveri.</p>
+        <p class="case-role reveal">Communications Specialist &middot; 2025&ndash;2026</p>
+        <p class="case-desc reveal">Marca centenaria de nutrici&oacute;n y salud. Gestion&eacute; la comunicaci&oacute;n digital: coordinaci&oacute;n de campa&ntilde;as de <strong>Meta Ads</strong>, gesti&oacute;n de <strong>80+ colaboraciones con influencers</strong>, briefs de producto y propuestas de activaciones como Lapso x Santiveri.</p>
 
         <div class="metrics reveal">
           <div class="metric">
             <div class="metric-value">4.1M</div>
             <div class="metric-label">Impresiones Meta Ads</div>
-            <div class="metric-sub">Enero 2026</div>
+            <div class="metric-sub">Solo en enero 2026</div>
           </div>
           <div class="metric">
             <div class="metric-value">80+</div>
             <div class="metric-label">Colaboraciones influencers</div>
-            <div class="metric-sub">Campa&ntilde;a seeding</div>
+            <div class="metric-sub">700+ env&iacute;os de seeding</div>
           </div>
           <div class="metric">
-            <div class="metric-value">+5.971%</div>
-            <div class="metric-label">Aumento de alcance</div>
-            <div class="metric-sub">Org&aacute;nico Jun-Jul</div>
+            <div class="metric-value">1.3M</div>
+            <div class="metric-label">Alcance</div>
+            <div class="metric-sub">Meta Ads enero 2026</div>
           </div>
           <div class="metric">
-            <div class="metric-value">6.76%</div>
-            <div class="metric-label">CTR medio</div>
-            <div class="metric-sub">Campa&ntilde;as pagadas</div>
+            <div class="metric-value">6.69%</div>
+            <div class="metric-label">CTR Prospecting</div>
+            <div class="metric-sub">Campa&ntilde;a de seguidores</div>
           </div>
         </div>
 
         <div class="portfolio-gallery reveal">
-          <figure class="gallery-item"><img src="images/santiveri-report.jpg" alt="Report influencers" loading="lazy"><figcaption class="gallery-caption">Report Influencers</figcaption></figure>
-          <figure class="gallery-item"><img src="images/santiveri-meta.jpg" alt="Meta Ads Report" loading="lazy"><figcaption class="gallery-caption">Meta Ads Report</figcaption></figure>
-          <figure class="gallery-item"><img src="images/santiveri-lapso.jpg" alt="Proyecto Lapso" loading="lazy"><figcaption class="gallery-caption">Proyecto Lapso x Santiveri</figcaption></figure>
-          <figure class="gallery-item"><img src="images/santiveri-brief.jpg" alt="Brief Triple Zero" loading="lazy"><figcaption class="gallery-caption">Brief Triple Zero</figcaption></figure>
+          <figure class="gallery-item"><img src="images/santiveri-protein90.jpg" alt="Creatividad Protein 90" loading="lazy"><figcaption class="gallery-caption">Creatividad Protein 90</figcaption></figure>
+          <figure class="gallery-item"><img src="images/santiveri-dashboard.jpg" alt="Dashboard Meta Ads" loading="lazy"><figcaption class="gallery-caption">Dashboard Meta Ads</figcaption></figure>
+          <figure class="gallery-item"><img src="images/santiveri-influencers-report.jpg" alt="Report Influencers y Stories" loading="lazy"><figcaption class="gallery-caption">Report Influencers</figcaption></figure>
+          <figure class="gallery-item"><img src="images/santiveri-seeding-flyer.jpg" alt="Flyer Seeding Sant" loading="lazy"><figcaption class="gallery-caption">Flyer Seeding Sant</figcaption></figure>
         </div>
 
         <div class="highlights reveal">
           <div class="highlight">
             <h4>Influencers y seeding</h4>
-            <p>80+ colaboraciones cerradas, 96 paquetes enviados, 850+ perfiles nuevos en la base de datos. De esos, 52 publicaron contenido.</p>
+            <p>80+ colaboraciones cerradas, 700+ env&iacute;os de producto y 850+ perfiles en la base de datos.</p>
           </div>
           <div class="highlight">
             <h4>Meta Ads</h4>
-            <p>Coordinaba con la agencia externa las campa&ntilde;as de paid. 1.3M de alcance, 75.9K clics, CTR del 6.76% entre prospecting y retargeting.</p>
+            <p>Coordinaci&oacute;n con agencia externa. 4.1M impresiones, 1.3M de alcance, 75.9K clics y un CPC de 0.07&euro;.</p>
           </div>
           <div class="highlight">
             <h4>Briefs y propuestas</h4>
-            <p>Escrib&iacute; los briefs de Triple Zero, mont&eacute; la propuesta Lapso x Santiveri y arm&eacute; las plantillas de informes mensuales.</p>
+            <p>Briefs de producto (Triple Zero, Metabolic), propuesta Lapso x Santiveri e informes mensuales.</p>
           </div>
           <div class="highlight">
-            <h4>Stories y contenido org&aacute;nico</h4>
-            <p>198 stories que sumaron 5.9M visualizaciones. 12.6M interacciones totales. El alcance subi&oacute; un 3501%.</p>
+            <h4>Contenido org&aacute;nico</h4>
+            <p>Gesti&oacute;n de Instagram y LinkedIn: planificaci&oacute;n, publicaci&oacute;n, stories y respuesta a comunidad.</p>
           </div>
         </div>
       </div>
 
       <!-- UNDERDOGS -->
       <div class="tab-content" id="tab-underdogs">
-        <p class="case-role reveal">Junior Community Manager &middot; 2024</p>
-        <p class="case-desc reveal">Agencia de representaci&oacute;n deportiva. Llevaba el <strong>Instagram oficial</strong>, propon&iacute;a contenido para futbolistas como Lamine Yamal, Ansu Fati y Balde, y hac&iacute;a los reports de rendimiento de sus cuentas.</p>
+        <p class="case-role reveal">Community Manager &middot; 2024</p>
+        <p class="case-desc reveal">Agencia de representaci&oacute;n de futbolistas de &eacute;lite. Gestion&eacute; el <strong>Instagram oficial</strong> de la agencia, propuse contenido para deportistas como Lamine Yamal, Ansu Fati y Balde, y elabor&eacute; los reports mensuales de rendimiento de sus cuentas.</p>
 
         <div class="metrics reveal">
           <div class="metric">
             <div class="metric-value">32.9M</div>
-            <div class="metric-label">Seguidores gestionados</div>
-            <div class="metric-sub">Lamine Yamal</div>
+            <div class="metric-label">Seguidores</div>
+            <div class="metric-sub">Lamine Yamal (mayo 2025)</div>
           </div>
           <div class="metric">
             <div class="metric-value">11.2M</div>
             <div class="metric-label">Likes en top post</div>
-            <div class="metric-sub">R&eacute;cord de engagement</div>
+            <div class="metric-sub">R&eacute;cord de la cuenta</div>
           </div>
           <div class="metric">
             <div class="metric-value">+156K</div>
             <div class="metric-label">Seguidores/d&iacute;a</div>
-            <div class="metric-sub">Pico de crecimiento</div>
+            <div class="metric-sub">Media abril-mayo 2025</div>
           </div>
           <div class="metric">
-            <div class="metric-value">44.1%</div>
+            <div class="metric-value">18.3%</div>
             <div class="metric-label">Engagement rate</div>
-            <div class="metric-sub">Interacci&oacute;n media</div>
+            <div class="metric-sub">Mayo 2025</div>
           </div>
         </div>
 
@@ -1035,108 +1183,108 @@
         </div>
 
         <div class="highlights reveal">
-          <div class="highlight"><h4>Instagram de la agencia</h4><p>Llevaba la cuenta directamente: parrilla, publicaciones y la l&iacute;nea visual de la marca.</p></div>
-          <div class="highlight"><h4>Contenido para futbolistas</h4><p>Propon&iacute;a TikToks y Reels: Q&amp;A, behind the scenes, trends del momento. Formatos que funcionan en deporte.</p></div>
-          <div class="highlight"><h4>Reports mensuales</h4><p>Hac&iacute;a los informes de rendimiento de cada deportista. Lamine Yamal: 32.9M seguidores, posts con +11M likes.</p></div>
-          <div class="highlight"><h4>Benchmarking</h4><p>Estudi&eacute; a Sportfive, Polaris Sports y Jack BGst para saber d&oacute;nde se posicionaba la agencia.</p></div>
+          <div class="highlight"><h4>Instagram de la agencia</h4><p>Gesti&oacute;n directa: parrilla, publicaciones y l&iacute;nea visual de la marca.</p></div>
+          <div class="highlight"><h4>Contenido para deportistas</h4><p>Propuestas de TikToks y Reels para Lamine Yamal, Ansu Fati y Balde: Q&amp;A, BTS, trends virales.</p></div>
+          <div class="highlight"><h4>Reports de rendimiento</h4><p>Informes mensuales de m&eacute;tricas sociales. La cuenta de Lamine creci&oacute; de 25.6M a 32.9M durante mi periodo.</p></div>
+          <div class="highlight"><h4>Branded content</h4><p>An&aacute;lisis de rendimiento de colaboraciones con marcas como Adidas (5.5M likes) y Oppo.</p></div>
         </div>
       </div>
 
       <!-- LA CREME -->
       <div class="tab-content" id="tab-lacreme">
         <p class="case-role reveal">Junior Communications Specialist &middot; 2023</p>
-        <p class="case-desc reveal">Agencia de marketing gastron&oacute;mico con una <strong>app de recomendaciones por chefs Michelin</strong>. Particip&eacute; en el desarrollo del producto, hice consultor&iacute;a a restaurantes y represent&eacute; la marca en <strong>San Sebasti&aacute;n Gastronom&iacute;ka</strong>.</p>
+        <p class="case-desc reveal">App de recomendaciones gastron&oacute;micas con jurado de <strong>chefs estrella Michelin</strong> + agencia de marketing gastron&oacute;mico. Gestion&eacute; redes sociales desde cero, di visibilidad a chefs Michelin como altavoz de la marca, y represent&eacute; a La Cr&eacute;me en <strong>San Sebasti&aacute;n Gastronom&iacute;ka</strong>.</p>
 
         <div class="metrics reveal">
           <div class="metric">
-            <div class="metric-value">+12%</div>
-            <div class="metric-label">Crecimiento seguidores</div>
-            <div class="metric-sub">Redes sociales</div>
+            <div class="metric-value">15</div>
+            <div class="metric-label">Establecimientos</div>
+            <div class="metric-sub">Consultor&iacute;a de marketing gastro</div>
           </div>
           <div class="metric">
-            <div class="metric-value">App</div>
-            <div class="metric-label">Desarrollo de producto</div>
-            <div class="metric-sub">Recomendaciones gastro</div>
+            <div class="metric-value">Arzak</div>
+            <div class="metric-label">Caso destacado</div>
+            <div class="metric-sub">Presentaci&oacute;n recorrido Michelin</div>
           </div>
           <div class="metric">
-            <div class="metric-value">Chefs</div>
-            <div class="metric-label">Ponencias Michelin</div>
-            <div class="metric-sub">Eventos y congresos</div>
+            <div class="metric-value">Elkano</div>
+            <div class="metric-label">Nuevo men&uacute;</div>
+            <div class="metric-sub">Direcci&oacute;n visual y fotogr&aacute;fica</div>
           </div>
           <div class="metric">
-            <div class="metric-value">B2B</div>
-            <div class="metric-label">Consultor&iacute;a gastro</div>
-            <div class="metric-sub">Dise&ntilde;o de men&uacute;s</div>
+            <div class="metric-value">RRSS</div>
+            <div class="metric-label">Desde cero</div>
+            <div class="metric-sub">Marca nueva, crecimiento orgánico</div>
           </div>
         </div>
 
         <div class="portfolio-gallery reveal">
           <figure class="gallery-item"><img src="images/lacreme-equipo.jpg" alt="Equipo La Cr&eacute;me en Gastronom&iacute;ka" loading="lazy"><figcaption class="gallery-caption">Equipo en Gastronom&iacute;ka</figcaption></figure>
           <figure class="gallery-item"><img src="images/lacreme-evento.jpg" alt="Miriam en San Sebasti&aacute;n Gastronom&iacute;ka" loading="lazy"><figcaption class="gallery-caption">San Sebasti&aacute;n Gastronom&iacute;ka</figcaption></figure>
+          <figure class="gallery-item"><img src="images/lacreme-chapas-mano.jpg" alt="Chapas La Cr&eacute;me en Gastronom&iacute;ka" loading="lazy"><figcaption class="gallery-caption">Branding en Gastronom&iacute;ka</figcaption></figure>
           <figure class="gallery-item"><img src="images/lacreme-chapas.jpg" alt="Merchandise La Cr&eacute;me" loading="lazy"><figcaption class="gallery-caption">Merchandise La Cr&eacute;me</figcaption></figure>
-          <figure class="gallery-item"><img src="images/lacreme-merch.jpg" alt="Producci&oacute;n de chapas La Cr&eacute;me" loading="lazy"><figcaption class="gallery-caption">Producci&oacute;n chapas</figcaption></figure>
         </div>
 
         <div class="highlights reveal">
           <div class="highlight">
-            <h4>La app</h4>
-            <p>Ayud&eacute; a construir una app donde chefs Michelin recomiendan restaurantes de forma an&oacute;nima. Algo distinto a TheFork o Google.</p>
+            <h4>Chefs Michelin como altavoz</h4>
+            <p>Dimos visibilidad a chefs estrella Michelin a trav&eacute;s de las redes de La Cr&eacute;me. Ellos no pagaban: les interesaba porque &eacute;ramos su altavoz.</p>
           </div>
           <div class="highlight">
-            <h4>Consultor&iacute;a a restaurantes</h4>
-            <p>Asesor&eacute; a restaurantes con fotos de producto, estilo visual y dise&ntilde;o de cartas. Marketing aplicado al d&iacute;a a d&iacute;a del negocio.</p>
+            <h4>Caso Arzak</h4>
+            <p>Cre&eacute; la presentaci&oacute;n del recorrido Michelin de la familia Arzak para eventos gastron&oacute;micos.</p>
+          </div>
+          <div class="highlight">
+            <h4>Caso Elkano</h4>
+            <p>Particip&eacute; en la creaci&oacute;n visual de un nuevo men&uacute;: b&uacute;squeda de fotos y direcci&oacute;n de lo que el chef quer&iacute;a transmitir.</p>
           </div>
           <div class="highlight">
             <h4>Gastronom&iacute;ka</h4>
-            <p>Fui al congreso a explicar la app a profesionales del sector. Cara a cara, sin filtros.</p>
-          </div>
-          <div class="highlight">
-            <h4>Ponencias para chefs</h4>
-            <p>Prepar&eacute; presentaciones para chefs con estrella Michelin y les ense&ntilde;&eacute; a hablar en p&uacute;blico en congresos.</p>
+            <p>Present&eacute; la app y cubr&iacute; el congreso en redes sociales. Consultor&iacute;a directa a 15 establecimientos del sector.</p>
           </div>
         </div>
       </div>
 
       <!-- REAL SOCIEDAD -->
       <div class="tab-content" id="tab-realsociedad">
-        <p class="case-role reveal">Community Manager Trainee &middot; 2021&ndash;2022</p>
-        <p class="case-desc reveal">Pr&aacute;cticas en el departamento de comunicaci&oacute;n del club. Llevaba <strong>Twitter e Instagram</strong>: entre semana copys y contenido, y los d&iacute;as de partido desde el <strong>palco de prensa</strong> publicando alineaci&oacute;n, descanso y resultado en tiempo real, coordinada con el fot&oacute;grafo a pie de campo.</p>
+        <p class="case-role reveal">Community Manager &middot; 2021&ndash;2022</p>
+        <p class="case-desc reveal">Pr&aacute;cticas en el departamento de comunicaci&oacute;n del club durante una temporada completa. Cubr&iacute; todos los <strong>partidos en casa desde el palco de prensa</strong> de la Reale Arena, gestionando <strong>Instagram y Twitter</strong> en tiempo real: alineaci&oacute;n, descanso, goles y resultado. Supervisada por <strong>Luis Arconada</strong>, Director de Comunicaci&oacute;n.</p>
 
         <div class="metrics reveal">
           <div class="metric">
-            <div class="metric-value">2</div>
+            <div class="metric-value">~19</div>
+            <div class="metric-label">Partidos cubiertos</div>
+            <div class="metric-sub">Temporada completa en casa</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">3+</div>
+            <div class="metric-label">Posts por partido</div>
+            <div class="metric-sub">M&iacute;nimo en Instagram</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">IG + X</div>
             <div class="metric-label">Redes gestionadas</div>
-            <div class="metric-sub">Twitter &amp; Instagram</div>
+            <div class="metric-sub">+ alg&uacute;n TikTok</div>
           </div>
           <div class="metric">
-            <div class="metric-value">Matchday</div>
-            <div class="metric-label">Cobertura en directo</div>
-            <div class="metric-sub">Desde palco de prensa</div>
-          </div>
-          <div class="metric">
-            <div class="metric-value">Copys</div>
-            <div class="metric-label">Redacci&oacute;n diaria</div>
-            <div class="metric-sub">Entre semana</div>
-          </div>
-          <div class="metric">
-            <div class="metric-value">Coord.</div>
-            <div class="metric-label">Fot&oacute;grafo de campo</div>
-            <div class="metric-sub">Contenido en tiempo real</div>
+            <div class="metric-value">Directo</div>
+            <div class="metric-label">Palco de prensa</div>
+            <div class="metric-sub">Coordinada con fot&oacute;grafo</div>
           </div>
         </div>
 
         <div class="portfolio-gallery reveal">
           <figure class="gallery-item"><img src="images/rs-acreditacion.jpg" alt="Acreditaci&oacute;n prensa Real Sociedad" loading="lazy"><figcaption class="gallery-caption">Acreditaci&oacute;n de prensa</figcaption></figure>
           <figure class="gallery-item"><img src="images/rs-estadio.jpg" alt="Cobertura desde el palco de prensa" loading="lazy"><figcaption class="gallery-caption">Palco de prensa, Reale Arena</figcaption></figure>
-          <figure class="gallery-item"><img src="images/rs-pantalla.jpg" alt="Publicaci&oacute;n de alineaci&oacute;n en directo" loading="lazy"><figcaption class="gallery-caption">Alineaci&oacute;n en directo</figcaption></figure>
+          <figure class="gallery-item"><img src="images/rs-miriam-estadio.jpg" alt="Miriam en la Reale Arena" loading="lazy"><figcaption class="gallery-caption">En la Reale Arena</figcaption></figure>
           <figure class="gallery-item"><img src="images/rs-matchday.jpg" alt="Matchday Real Sociedad vs Atl&eacute;tico" loading="lazy"><figcaption class="gallery-caption">Matchday vs Atl&eacute;tico</figcaption></figure>
         </div>
 
         <div class="highlights reveal">
-          <div class="highlight"><h4>Twitter e Instagram</h4><p>Publicaba a diario en las dos: copys adaptados al tono del club, fotos de equipo y coberturas de los partidos.</p></div>
-          <div class="highlight"><h4>Matchday en directo</h4><p>Desde el palco de prensa: alineaci&oacute;n, inicio, descanso, resultado. El fot&oacute;grafo en el c&eacute;sped y yo publicando arriba.</p></div>
-          <div class="highlight"><h4>Copys</h4><p>Escrib&iacute;a los textos para ambas plataformas. Cada red tiene su tono y su formato.</p></div>
-          <div class="highlight"><h4>An&aacute;lisis</h4><p>Revisaba las m&eacute;tricas de las publicaciones y qu&eacute; hac&iacute;an otros clubes en sus redes.</p></div>
+          <div class="highlight"><h4>Matchday en directo</h4><p>Desde el palco de prensa de la Reale Arena: alineaci&oacute;n, descanso, goles y resultado. Casi siempre sola, coordinada con el fot&oacute;grafo a pie de campo.</p></div>
+          <div class="highlight"><h4>Contenido diario</h4><p>Entre semana: copys para Instagram y Twitter adaptados al tono del club. D&iacute;as de partido: m&iacute;nimo 3 publicaciones en IG + cobertura en Twitter.</p></div>
+          <div class="highlight"><h4>Autonom&iacute;a</h4><p>Aunque estaba de pr&aacute;cticas, gestion&eacute; las redes casi de forma aut&oacute;noma. Luis Arconada supervisaba pero confiaba en mi criterio.</p></div>
+          <div class="highlight"><h4>Benchmarking</h4><p>Analizaba qu&eacute; hac&iacute;an otros clubes de LaLiga en sus redes para proponer mejoras al departamento.</p></div>
         </div>
       </div>
     </div>
@@ -1149,6 +1297,7 @@
         <p class="section-eyebrow">Trayectoria</p>
         <div class="section-title-row">
           <div class="section-title">EXPERIENCIA</div>
+          <div class="section-title-script">profesional</div>
         </div>
         <div class="section-line"></div>
       </div>
@@ -1156,60 +1305,62 @@
         <div class="exp-card reveal">
           <div class="exp-header">
             <div>
-              <div class="exp-role">Junior Communications Specialist</div>
+              <div class="exp-role">Communications Specialist</div>
               <div class="exp-company">Casa Santiveri</div>
+              <div class="exp-context">Marca centenaria de nutrici&oacute;n y salud</div>
             </div>
-            <div class="exp-date">2025 &ndash; Actual</div>
+            <div class="exp-date">2025 &ndash; 2026</div>
           </div>
           <ul class="exp-list">
-            <li>RRSS y campa&ntilde;as Meta Ads: 4.1M impresiones, 1.3M alcance, CTR 6.76%</li>
-            <li>80+ colaboraciones con influencers, 96 env&iacute;os de seeding</li>
-            <li>Briefs de producto (Triple Zero) y propuestas de activaciones (Lapso x Santiveri)</li>
-            <li>198 stories con 5.9M visualizaciones, alcance org&aacute;nico +5.971%</li>
-            <li>Informes mensuales de comunicaci&oacute;n, PR y campa&ntilde;as</li>
+            <li>Gesti&oacute;n de RRSS y coordinaci&oacute;n de campa&ntilde;as Meta Ads: <strong>4.1M impresiones</strong>, CTR 6.76%</li>
+            <li><strong>80+ colaboraciones</strong> con influencers y <strong>700+ env&iacute;os</strong> de seeding</li>
+            <li>198 stories con <strong>5.9M visualizaciones</strong>, alcance org&aacute;nico +5.971%</li>
+            <li>Briefs de producto, propuestas de activaciones e informes mensuales</li>
           </ul>
         </div>
         <div class="exp-card reveal">
           <div class="exp-header">
             <div>
-              <div class="exp-role">Junior Community Manager</div>
+              <div class="exp-role">Community Manager</div>
               <div class="exp-company">The Underdogs Agency</div>
+              <div class="exp-context">Agencia de representaci&oacute;n de futbolistas de &eacute;lite</div>
             </div>
             <div class="exp-date">2024</div>
           </div>
           <ul class="exp-list">
-            <li>Instagram oficial de la agencia: parrilla, publicaciones y l&iacute;nea visual</li>
-            <li>Propuestas de TikToks y Reels para Lamine Yamal, Ansu Fati y Balde</li>
-            <li>Reports mensuales de rendimiento social de los deportistas</li>
-            <li>Benchmarking de agencias como Sportfive y Polaris Sports</li>
+            <li>Instagram de la agencia: parrilla, publicaciones y l&iacute;nea visual</li>
+            <li>Propuestas de contenido para <strong>Lamine Yamal</strong>, Ansu Fati y Balde</li>
+            <li>Reports mensuales de rendimiento social (<strong>32.9M seguidores</strong>, posts con +11M likes)</li>
           </ul>
         </div>
         <div class="exp-card reveal">
           <div class="exp-header">
             <div>
-              <div class="exp-role">Junior Communications Specialist</div>
+              <div class="exp-role">Communications Specialist</div>
               <div class="exp-company">La Cr&eacute;me</div>
+              <div class="exp-context">Agencia de marketing gastron&oacute;mico</div>
             </div>
             <div class="exp-date">2023</div>
           </div>
           <ul class="exp-list">
-            <li>Estrategia de redes sociales, seguidores +12%</li>
-            <li>Campa&ntilde;as con micro-influencers del sector gastron&oacute;mico</li>
-            <li>Contenido para eventos y congresos como Gastronom&iacute;ka</li>
+            <li>Estrategia de redes sociales: seguidores <strong>+12%</strong></li>
+            <li>Colaboraciones con micro-influencers del sector gastron&oacute;mico</li>
+            <li>Preparaci&oacute;n de ponencias para chefs Michelin y representaci&oacute;n en <strong>San Sebasti&aacute;n Gastronom&iacute;ka</strong></li>
           </ul>
         </div>
         <div class="exp-card reveal">
           <div class="exp-header">
             <div>
-              <div class="exp-role">Community Manager Trainee</div>
+              <div class="exp-role">Community Manager</div>
               <div class="exp-company">Real Sociedad F&uacute;tbol Club</div>
+              <div class="exp-context">Departamento de comunicaci&oacute;n del club &mdash; Pr&aacute;cticas</div>
             </div>
             <div class="exp-date">2021 &ndash; 2022</div>
           </div>
           <ul class="exp-list">
             <li>Twitter e Instagram del club: copys y publicaciones diarias</li>
-            <li>Cobertura matchday desde el palco de prensa</li>
-            <li>Benchmarking de otros clubes</li>
+            <li>Cobertura <strong>matchday en directo</strong> desde el palco de prensa de Anoeta</li>
+            <li>Coordinaci&oacute;n con fot&oacute;grafo a pie de campo para contenido en tiempo real</li>
           </ul>
         </div>
       </div>
@@ -1230,26 +1381,42 @@
       <div class="section-header reveal">
         <p class="section-eyebrow">Formaci&oacute;n &amp; Skills</p>
         <div class="section-title-row">
-          <div class="section-title">CONOCIMIENTOS</div>
+          <div class="section-title">FORMACI&Oacute;N</div>
+          <div class="section-title-script">&amp; herramientas</div>
         </div>
         <div class="section-line"></div>
       </div>
       <div class="knowledge-layout">
         <div class="edu-stack">
           <div class="edu-item reveal">
-            <h4>M&aacute;ster Dual en Direcci&oacute;n y Gesti&oacute;n de la Comunicaci&oacute;n Digital + Content Manager y Social Media</h4>
-            <div class="edu-school">IM Digital Business School Barcelona</div>
-            <div class="edu-year">2024 &ndash; 2025</div>
+            <div class="edu-logo">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><text x="3" y="20" font-family="'Bricolage Grotesque', sans-serif" font-weight="800" font-size="16" fill="#4A3728">IM</text></svg>
+            </div>
+            <div>
+              <h4>M&aacute;ster Dual en Direcci&oacute;n y Gesti&oacute;n de la Comunicaci&oacute;n Digital + Content Manager y Social Media</h4>
+              <div class="edu-school">IM Digital Business School, Barcelona</div>
+              <div class="edu-year">2024 &ndash; 2026</div>
+            </div>
           </div>
           <div class="edu-item reveal">
-            <h4>M&aacute;ster en Comunicaci&oacute;n y Periodismo Gastron&oacute;mico</h4>
-            <div class="edu-school">Basque Culinary Center &ndash; Mondragon Unibertsitatea</div>
-            <div class="edu-year">2022 &ndash; 2023</div>
+            <div class="edu-logo">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><text x="1" y="20" font-family="'Bricolage Grotesque', sans-serif" font-weight="800" font-size="13" fill="#4A3728">BCC</text></svg>
+            </div>
+            <div>
+              <h4>M&aacute;ster en Comunicaci&oacute;n y Periodismo Gastron&oacute;mico</h4>
+              <div class="edu-school">Basque Culinary Center &ndash; Mondragon Unibertsitatea</div>
+              <div class="edu-year">2022 &ndash; 2023</div>
+            </div>
           </div>
           <div class="edu-item reveal">
-            <h4>Grado en Comunicaci&oacute;n y Periodismo</h4>
-            <div class="edu-school">Universidad de Deusto San Sebasti&aacute;n</div>
-            <div class="edu-year">2019 &ndash; 2022</div>
+            <div class="edu-logo">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><text x="3" y="20" font-family="'Bricolage Grotesque', sans-serif" font-weight="800" font-size="14" fill="#4A3728">UD</text></svg>
+            </div>
+            <div>
+              <h4>Grado en Comunicaci&oacute;n y Periodismo</h4>
+              <div class="edu-school">Universidad de Deusto, San Sebasti&aacute;n</div>
+              <div class="edu-year">2019 &ndash; 2022</div>
+            </div>
           </div>
         </div>
         <div class="lang-block reveal">
@@ -1257,6 +1424,51 @@
           <div class="lang-row"><span class="lang-name">Espa&ntilde;ol</span><span class="lang-level">Nativo</span></div>
           <div class="lang-row"><span class="lang-name">Euskera</span><span class="lang-level">Nativo</span></div>
           <div class="lang-row"><span class="lang-name">Ingl&eacute;s</span><span class="lang-level">B2</span></div>
+          <div class="lang-row"><span class="lang-name">Catal&aacute;n</span><span class="lang-level learning">A1 &middot; En aprendizaje</span></div>
+        </div>
+      </div>
+      <div class="tools-section reveal">
+        <h3>Herramientas</h3>
+        <div class="tools-grid">
+          <span class="tool-secondary">Canva</span>
+          <span class="tool-secondary">Meta Ads</span>
+          <span class="tool-secondary">CapCut</span>
+          <span class="tool-secondary">Adobe Premiere</span>
+          <span class="tool-secondary">Metricool</span>
+          <span class="tool-secondary">Google Analytics</span>
+          <span class="tool-secondary">Hootsuite</span>
+          <span class="tool-secondary">Buffer</span>
+          <span class="tool-secondary">InShot</span>
+          <span class="tool-secondary">Mailchimp</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCIAS -->
+  <section id="referencias" style="padding: 80px 0;">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Recomendaciones</p>
+        <div class="section-title-row">
+          <div class="section-title">REFERENCIAS</div>
+          <div class="section-title-script">profesionales</div>
+        </div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="reveal" style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap; margin-top: 40px;">
+        <div style="flex: 0 0 280px;">
+          <img src="images/carta-arconada.jpg" alt="Carta de recomendaci&oacute;n de Luis Arconada" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+        </div>
+        <div style="flex: 1; min-width: 300px;">
+          <blockquote style="font-size: 1.2rem; line-height: 1.7; color: #5a4a3a; font-style: italic; border-left: 3px solid #b5a48b; padding-left: 24px; margin: 0;">
+            &laquo;Miriam ha demostrado ser una persona amable, responsable y trabajadora. Le considero con la aptitud y capacidad para afrontar cualquier funci&oacute;n que se le encomiende.&raquo;
+          </blockquote>
+          <div style="margin-top: 20px;">
+            <p style="font-weight: 700; color: #3d2e1e; font-size: 1.1rem; margin: 0;">Luis Arconada</p>
+            <p style="color: #8a7a6a; margin: 4px 0 0 0;">Director de Comunicaci&oacute;n &mdash; Real Sociedad de F&uacute;tbol</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1264,22 +1476,53 @@
 
   <!-- CONTACTO -->
   <section id="contacto" class="contact-section">
+    <!-- Elementos decorativos -->
+    <div class="contact-deco-left">
+      <svg width="180" height="180" viewBox="0 0 180 180" fill="none">
+        <circle cx="90" cy="90" r="80" stroke="var(--accent)" stroke-width="1"/>
+        <circle cx="90" cy="90" r="55" stroke="var(--accent)" stroke-width="0.75"/>
+        <circle cx="90" cy="90" r="30" stroke="var(--accent)" stroke-width="0.5"/>
+      </svg>
+    </div>
+    <div class="contact-deco-right">
+      <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+        <rect x="20" y="20" width="120" height="120" rx="20" stroke="var(--accent)" stroke-width="1"/>
+        <rect x="45" y="45" width="70" height="70" rx="12" stroke="var(--accent)" stroke-width="0.75"/>
+      </svg>
+    </div>
     <div class="container">
-      <div class="reveal">
-        <div class="contact-headline">HABLAMOS</div>
-        <div class="contact-headline-script">&iquest;hablamos?</div>
-        <p class="contact-sub">Busco trabajo en Barcelona como Social Media Manager o Communications Specialist. Si necesitas a alguien as&iacute; en tu equipo, escr&iacute;beme.</p>
+      <div class="contact-title reveal">&iquest;Hablamos?</div>
+      <p class="contact-text reveal">Disponibilidad inmediata. Abierta a presencial, h&iacute;brido o remoto en Barcelona.</p>
+
+      <div class="contact-grid reveal">
+        <a href="mailto:baleztenamiriam@gmail.com" class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4A3728" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+          </div>
+          <span class="contact-card-label">Email</span>
+          <span class="contact-card-value">baleztenamiriam@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/miriam-baleztena-irazoqui-aa6493217" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4A3728" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <span class="contact-card-label">LinkedIn</span>
+          <span class="contact-card-value">Miriam Baleztena</span>
+        </a>
+        <a href="tel:+34674991378" class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4A3728" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <span class="contact-card-label">Tel&eacute;fono</span>
+          <span class="contact-card-value">+34 674 991 378</span>
+        </a>
       </div>
-      <div class="contact-actions reveal">
-        <a href="mailto:baleztenamiriam@gmail.com" class="contact-pill">&#9993;&ensp;baleztenamiriam@gmail.com</a>
-        <a href="tel:+34674991378" class="contact-pill">&#128222;&ensp;+34 674 991 378</a>
-      </div>
-      <p class="contact-location reveal">Barcelona, Espa&ntilde;a</p>
-      <div class="social-row reveal">
-        <a href="https://www.linkedin.com/in/miriambaleztena" target="_blank" rel="noopener">LinkedIn &#8599;</a>
-        <a href="#" target="_blank" rel="noopener">Instagram &#8599;</a>
-        <a href="#" target="_blank" rel="noopener">TikTok &#8599;</a>
-      </div>
+
+      <a href="cv-miriam-baleztena.pdf" class="contact-cv reveal" download>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Descargar CV
+      </a>
+
     </div>
   </section>
 
@@ -1379,7 +1622,7 @@
           counterObs.unobserve(e.target);
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.7, rootMargin: '0px 0px -10% 0px' });
     document.querySelectorAll('.metrics').forEach(m => counterObs.observe(m));
 
     // Lightbox
