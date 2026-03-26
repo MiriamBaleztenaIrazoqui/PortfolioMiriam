@@ -447,6 +447,8 @@
     }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.5s ease; }
     .gallery-item:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.1); z-index: 2; }
+    .gallery-item.gallery-item--document { aspect-ratio: auto; }
+    .gallery-item.gallery-item--document img { height: auto; object-fit: contain; }
     .gallery-item:hover img { transform: scale(1.05); }
     .gallery-caption {
       position: absolute;
@@ -1457,18 +1459,18 @@
         <div class="section-line"></div>
       </div>
 
-      <div class="reveal" style="display: flex; gap: 50px; align-items: center; flex-wrap: wrap; margin-top: 40px; justify-content: center;">
-        <div style="flex: 1; min-width: 300px; max-width: 500px;">
-          <blockquote style="font-size: 1.3rem; line-height: 1.8; color: #5a4a3a; font-style: italic; border-left: 3px solid #b5a48b; padding-left: 24px; margin: 0;">
+      <div class="reveal" style="display: flex; gap: 50px; align-items: center; margin-top: 40px;">
+        <div class="portfolio-gallery" style="width: 500px; min-width: 500px;">
+          <figure class="gallery-item gallery-item--document" style="margin: 0;"><img src="images/carta-arconada.jpg" alt="Carta de recomendaci&oacute;n de Luis Arconada" style="width: 500px; height: auto; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); cursor: zoom-in;"></figure>
+        </div>
+        <div style="flex: 1;">
+          <blockquote style="font-size: 1.4rem; line-height: 1.8; color: #5a4a3a; font-style: italic; border-left: 3px solid #b5a48b; padding-left: 24px; margin: 0;">
             &laquo;Miriam ha demostrado ser una persona amable, responsable y trabajadora. Le considero con la aptitud y capacidad para afrontar cualquier funci&oacute;n que se le encomiende.&raquo;
           </blockquote>
-          <div style="margin-top: 24px;">
-            <p style="font-weight: 700; color: #3d2e1e; font-size: 1.15rem; margin: 0;">Luis Arconada</p>
-            <p style="color: #8a7a6a; margin: 4px 0 0 0;">Director de Comunicaci&oacute;n &mdash; Real Sociedad de F&uacute;tbol</p>
+          <div style="margin-top: 28px;">
+            <p style="font-weight: 700; color: #3d2e1e; font-size: 1.2rem; margin: 0;">Luis Arconada</p>
+            <p style="color: #8a7a6a; margin: 4px 0 0 0; font-size: 1.05rem;">Director de Comunicaci&oacute;n &mdash; Real Sociedad de F&uacute;tbol</p>
           </div>
-        </div>
-        <div style="flex: 0 0 420px;" class="portfolio-gallery">
-          <figure class="gallery-item"><img src="images/carta-arconada.jpg" alt="Carta de recomendaci&oacute;n de Luis Arconada" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); cursor: zoom-in;"></figure>
         </div>
       </div>
     </div>
